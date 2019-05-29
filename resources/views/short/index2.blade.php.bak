@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>快看快学</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet"  href="{{asset('assets/short/css/sm.min.css')}}" />
+    <link rel="stylesheet"  href="{{asset('assets/short/css/sm-extend.min.css')}}" />
+
+
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <a href="/" class="icon icon-home pull-left"></a>
+            <h1 class="title">快看快学</h1>
+        </header>
+        <div class="content">
+            <link rel="stylesheet"  href="{{asset('assets/short/css/fluidplayer.min.css')}}" />
+            <script language="JavaScript" src="{{asset('assets/short/js/fluidplayer.js')}}"></script>
+
+
+
+
+            @foreach($video as $key => $val)
+            <div class="card demo-card-header-pic">
+                <div valign="bottom" class="card-header color-white no-border no-padding">
+                    <img class='card-cover' src="{{$val->thumb}}"
+                           />
+                </div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <p>{{$val->description}}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a></a>
+                    <a data-link="{{env('PLAY_URL')}}{{$val->id}}" class="link viewVideo">观看视频</a>
+                </div>
+            </div>
+            @endforeach
+
+
+
+
+
+            <div class="content-block" style="margin-bottom:150px">
+                <p class="buttons-row">
+                    <a  href="{{$video->previousPageUrl()}}" class="button button-big button-round">上一页</a>
+                    <a  href="{{$video->nextPageUrl()}}" class="button button-big button-round">下一页</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script language="JavaScript" src="{{asset('assets/short/js/jquery.min.js')}}"></script>
+<script>
+    $(".viewVideo").click(function(){
+        var rand = Math.floor(Math.random()*999);
+        var videoId = 'my-video'+rand;
+        if($("[id^=my-video]").length >0){
+            $("[id^=fluid_video_wrapper_my-video]").remove();
+        }
+        $(this).parent().after('<video id="'+videoId+'" style="width: 100%"><source src="'+$(this).data("link").replace('_sm_','_dmb_')+'" title="高清" type="video/mp4" /><source src="'+$(this).data("link")+'" title="标清" type="video/mp4" /></video>')
+        var myFluidPlayer = fluidPlayer(videoId,
+            {
+                layoutControls: {
+                    fillToContainer: true,
+                    allowDownload:true,
+                    allowTheatre: false,
+                    controlBar: {
+                        autoHide:           true,
+                        autoHideTimeout:    2,
+                        animated:           true
+                    }
+                }
+            });
+        myFluidPlayer.play();
+    });
+</script>
+</body>
+</html>

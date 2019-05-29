@@ -1,0 +1,81 @@
+<?php
+
+namespace App\Http\Controllers\Ali;
+
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
+class ALiveController extends  Controller
+{
+    public $aConfig = array();
+
+    public function __construct()
+    {
+        $this->aConfig = config('aliyun.aliyun');
+    }
+
+    public  function  getUrl(Request $request){
+        $app_name = $request->input('appName');
+        $stream_name = $request->input('streamName');
+//        $pushUrl = sprintf("%s/%s/%s?vhost=%s", $this->aConfig['push_domain'], $app_name, $stream_name, $this->aConfig['vhost']);
+        $pushUrl = $this->aConfig['push_domain'].'/'.$app_name.'/'.$stream_name;
+        $urlParser = parse_url($pushUrl);
+        $authKey = self::generateAuthKey($this->aConfig, $urlParser['path']);
+        $push_url = sprintf("%s?auth_key=%s", $pushUrl, $authKey);
+        $playTypeInfo = [
+            'rtmp' => ['rtmp://', ''],
+            'flv' => ['https://', '.flv'],
+            'm3u8' => ['https://', '.m3u8'],
+        ];
+        $play_type = 'rtmp';
+        $transcode = "";
+        $playUrl = sprintf("%s%s/%s/%s%s%s", $playTypeInfo[$play_type][0], $this->aConfig['vhost'], $app_name, $stream_name,
+            $transcode, $playTypeInfo[$play_type][1]);
+//        $urlParser = parse_url($playUrl);
+//        $authKey = self::generateAuthKey($this->aConfig, $urlParser['path']);
+//        $play_url =  sprintf("%s?auth_key=%s", $playUrl, $authKey);
+        $url['push_url'] = $push_url;
+        $url['play_url'] = $playUrl;
+        return json_encode($url);
+    }
+
+
+//    public static function getPlayUrl($stream_name, $app_name = 'upvup.com', $play_type = null, $transcode = 'lld')
+//    {
+//        $config = Config::get('live.aliyun');
+//        if (empty($play_type)) {
+//            $play_type = $config['play_type'];
+//        }
+//        $playTypeInfo = [
+//            'rtmp' => ['rtmp://', ''],
+//            'flv' => ['https://', '.flv'],
+//            'm3u8' => ['https://', '.m3u8'],
+//        ];
+//        if (!empty($transcode)) {
+//            if ('m3u8' == $play_type) {
+//                $transcode = '';
+//            } else {
+//                $transcode = "_" . $transcode;
+//            }
+//        }
+//        $playUrl = sprintf("%s%s/%s/%s%s%s", $playTypeInfo[$play_type][0], $config['vhost'], $app_name, $stream_name,
+//            $transcode, $playTypeInfo[$play_type][1]);
+//        $urlParser = parse_url($playUrl);
+//        $authKey = self::generateAuthKey($config, $urlParser['path']);
+//
+//        return sprintf("%s?auth_key=%s", $playUrl, $authKey);
+//    }
+
+    protected static function generateAuthKey($config, $uri)
+    {
+        $validTime = time() + $config['auth_timestamp'];
+        //$validTime = 1502284433;
+        //sstring = “URI-Timestamp-rand-uid-PrivateKey” （URI是用户的请求对象相对地址，不包含参数，如 /Filename） HashValue = md5sum(sstring)
+        $hashString = sprintf("%s-%d-%d-%d-%s", $uri, $validTime, $config['auth_rand'],
+            $config['auth_uid'], $config['auth_key']);
+        return sprintf("%d-%d-%d-%s", $validTime, $config['auth_rand'], $config['auth_uid'], md5($hashString));
+    }
+}

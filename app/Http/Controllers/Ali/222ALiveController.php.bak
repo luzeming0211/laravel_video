@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Controllers\Ali;
+
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
+class ALiveController extends  Controller
+{
+    public $aConfig = array();
+
+    public function __construct()
+    {
+        $this->aConfig = config('aliyun.aliyun');
+    }
+
+    public  function  getUrl(Request $request){
+        $AppName = $request->input('appName');
+        $StreamName = $request->input('streamName');
+        $time = time() + 3600;
+        $key = $this->aConfig['auth_key'];
+        $strpush = "/$AppName/$StreamName-$time-0-0-$key";
+        $push_domain = $this->aConfig['push_domain'];
+        $pushurl = $push_domain."/$AppName/$StreamName?auth_key=$time-0-0-".md5($strpush);
+        $playTypeInfo = [
+            'rtmp' => ['rtmp://', ''],
+            'flv' => ['https://', '.flv'],
+            'm3u8' => ['http://', '.m3u8'],
+        ];
+        $play_type = 'm3u8';
+        $transcode = "";
+        $playUrl = sprintf("%s%s/%s/%s%s%s", $playTypeInfo[$play_type][0], $this->aConfig['vhost'], $AppName, $StreamName,
+            $transcode, $playTypeInfo[$play_type][1]);
+        $url['push_url'] = $pushurl;
+        $url['play_url'] = $playUrl;
+        return json_encode($url);
+    }
+
+}

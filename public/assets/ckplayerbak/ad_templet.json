@@ -1,0 +1,144 @@
+{
+  "front": [
+//    {
+    //      "file": "adv.mp4",
+    //      "type": "mp4",
+    //      "link": "http://www.ckplayer.com",
+    //      "time": 3,
+    //      "exhibitionMonitor": "exhibitionMonitor.php",
+    //      "clickMonitor": "clickMonitor.php"
+    //    },
+    //    {
+    //      "file": "adv.swf",
+    //      "type": "swf",
+    //      "link": "",
+    //      "time": 15,
+    //      "exhibitionMonitor": "exhibitionMonitor.php",
+    //      "clickMonitor": "clickMonitor.php"
+    //    },
+    //    {
+    //      "file": "adv.gif",
+    //      "type": "gif",
+    //      "link": "http://www.ckplayer.com",
+    //      "time": 15,
+    //      "exhibitionMonitor": "exhibitionMonitor.php",
+    //      "clickMonitor": "clickMonitor.php"
+    //    },
+    {
+      "file": "/uploads/9220190314163857.jpg",
+      "type": "jpg",
+      "link": "http://boser1u.top",
+      "time": 3
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+    }
+  ]
+//  "pause": [
+//    {
+//      "file": "adv.swf",
+//      "type": "swf",
+//      "link": "",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    },
+//    {
+//      "file": "adv.gif",
+//      "type": "gif",
+//      "link": "http://www.ckplayer.com",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    },
+//    {
+//      "file": "adv.jpg",
+//      "type": "jpg",
+//      "link": "http://www.ckplayer.com",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    }
+//  ],
+//  "insert": [
+//    {
+//      "file": "adv.swf",
+//      "type": "swf",
+//      "link": "",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    },
+//    {
+//      "file": "adv.gif",
+//      "type": "gif",
+//      "link": "http://www.ckplayer.com",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    },
+//    {
+//      "file": "adv.jpg",
+//      "type": "jpg",
+//      "link": "http://www.ckplayer.com",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    }
+//  ],
+//  "inserttime": "100,200",
+//  "end": [
+//    {
+//      "file": "adv.swf",
+//      "type": "swf",
+//      "link": "",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    },
+//    {
+//      "file": "adv.gif",
+//      "type": "gif",
+//      "link": "http://www.ckplayer.com",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    },
+//    {
+//      "file": "adv.jpg",
+//      "type": "jpg",
+//      "link": "http://www.ckplayer.com",
+//      "time": 5,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php"
+//    }
+//  ],
+//  "other": [
+//    {
+//      "file": "adv.gif",
+//      "type": "gif",
+//      "link": "http://www.ckplayer.com",
+//      "startTime": 3,
+//      "time": 10,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php",
+//      "align": "center",
+//      "vAlign": "bottom",
+//      "offsetX": -200,
+//      "offsetY": -110,
+//      "about": "这是一个gif广告（宽400，高60），当播放器播放startTime=3秒时显示，time=10秒后结束，水平中间对齐align=center,并且在水平轴上向左边偏移200像素，垂直方向是底部对齐并且向上偏移110个像素"
+//    },
+//    {
+//      "file": "adv.swf",
+//      "type": "swf",
+//      "link": "http://www.ckplayer.com",
+//      "startTime": 3,
+//      "time": 10,
+//      "exhibitionMonitor": "exhibitionMonitor.php",
+//      "clickMonitor": "clickMonitor.php",
+//      "align": "right",
+//      "vAlign": "right",
+//      "offsetX": -60,
+//      "offsetY": -60
+//    }
+//  ]
+}
