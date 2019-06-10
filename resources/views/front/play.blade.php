@@ -157,7 +157,7 @@
                     },{
                         name: 'PreviewVodComponent',
                         type: AliPlayerComponent.PreviewVodComponent,
-                        args: ['{{(config('hydrogen.look_time'))}}', '#endPreviewTemplate', ` 观看完整视频`]
+                        args: ['{{(config('hydrogen.look_time'))}}', '#endPreviewTemplate', ` 观看完整视频请开通会员`]
                     },{
                         name: 'MemoryPlayComponent',
                         type: AliPlayerComponent.MemoryPlayComponent,

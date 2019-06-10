@@ -82,7 +82,8 @@
 <script language="JavaScript" src="{{asset('assets/js/danmu.js')}}" charset="utf-8"></script>
 <script>
     var port = '{{(config('swoole.port'))}}';
-    ws = new WebSocket("ws://47.95.12.100:"+port);
+    var ip = '{{(config('swoole.ip'))}}';
+    ws = new WebSocket("ws://"+ip+":"+port);
 </script>
 <script language="JavaScript" src="{{asset('assets/js/live_websocekt.js')}}" charset="utf-8"></script>
 <script>

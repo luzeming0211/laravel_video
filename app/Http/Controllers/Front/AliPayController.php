@@ -15,12 +15,12 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class AliPayController extends Controller
 {
     protected $config = [
-    'app_id' => '2016092400585942',
+    'app_id' => '',
     'notify_url' => '',
     'return_url' => '',
     'ali_public_key' => '',
     // 加密方式： **RSA2**
-    'private_key' => '',
+    'private_key' => '=',
     'log' => [ // optional
         'file' => './logs/alipay.log',
         'level' => 'debug', // 建议生产环境等级调整为 info，开发环境为 debug
