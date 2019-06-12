@@ -1,4 +1,3 @@
-# laravel
 # 我的毕设设计：视频网站 
 ```
 使用框架laravel5.7
@@ -49,9 +48,13 @@
 
 
 
-### 特别感谢几个项目
+### 感谢的几个项目
 1. amaze ui
 2. easywechat
 3. ffmpeg
 4. swoole
+
+### 特别感谢
+    感谢东哥传授的redis存储方式，在优化观看直播用户的存取上性能上有了极大的提升
+    东哥博客：https://www.wangyd.com
 
